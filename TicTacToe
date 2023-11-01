@@ -1,0 +1,45 @@
+def main():
+    print("Welcome to the Tic Tac Toe game")
+    numb= [1,2,3,4,5,6,7,8,9]
+    x_o="x"
+    game= False
+    while game == False:
+        grid(numb)
+        if win(numb) ==True:
+            game= True
+        else:
+            player = int(input(f"{x_o}'s turn to choose a square (1-9): "))
+            numb[player-1]= x_o
+            if x_o=="x":
+                x_o="o"
+            elif x_o=="o":
+                x_o="x"
+ 
+def grid(numb):
+    print (f"{numb[0]}|{numb[1]}|{numb[2]}\n"
+         "-+-+-\n"
+       f"{numb[3]}|{numb[4]}|{numb[5]}\n"
+         "-+-+-\n"
+       f"{numb[6]}|{numb[7]}|{numb[8]}\n")
+
+def win(numb):
+    if (numb[0]== numb[1] and numb[1]== numb[2]) or (numb[3]== numb[4] and numb[4]==numb[5]) or (numb[6]== numb[7] and numb[7]==numb[8]):
+        print("You win!")
+        return True
+    elif (numb[0]== numb[4] and numb[4]== numb[8]) or (numb[6]==numb[4] and numb[4]==numb[2]):
+        print ("You win!")
+        return True
+    elif (numb[0]== numb[3] and numb[3]== numb[6]) or (numb[1]== numb[4] and numb[4]==numb[7]) or (numb[2]== numb[5] and numb[5]==numb[8]):
+        print ("You win!")
+        return True
+    else:
+        return False
+    
+main()
+    
+    
+
+    
+    
+    
+    
