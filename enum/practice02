@@ -1,0 +1,95 @@
+using System;
+using System.Collections;
+using System.Data;
+using System.Net;
+using System.Text; 
+
+
+class Program
+{
+     static void Main(string[] args)  
+
+    {  //ask user the ingridients, type of soup, seasoning.
+        while (true){
+            Console.Write("Would you like to cook? (yes/no) \n");
+            var one= Console.ReadLine();
+
+          if (one == "yes")  
+          {  //Call each one to the whole pot 
+            (TypeFood, MainIngredients, Seasoning) GetSoup()
+               {
+                TypeFood type = GetSoupType();
+                MainIngredients ingredient = GetMainIngredient();
+                Seasoning seasoning = GetSeasoning();
+                return (type, ingredient, seasoning);
+               }
+             TypeFood GetSoupType()
+             {
+                  Console.Write("Choose 1 soup type (Soup, Stew, Gumbo): ");
+                  var input = Console.ReadLine();
+                  return input switch //switch the input expression converting the values of enum
+                  {
+                     "soup" => TypeFood.Soup,
+                     "stew" => TypeFood.Stew,
+                      "gumbo" => TypeFood.Gumbo,
+                      _ => throw new NotImplementedException()//VS code fixed it. 
+                  };
+             }
+              MainIngredients GetMainIngredient()
+                 {
+                   Console.Write("Main ingredient (Potatoes, Chicken, Carrots, Beef): ");
+                   var input = Console.ReadLine();
+                   return input switch
+                    {
+                      "potatoes" => MainIngredients.Potatoes,
+                      "chicken" => MainIngredients.Chicken,
+                      "carrots" => MainIngredients.Carrots,
+                      "beef" => MainIngredients.Beef,
+                      _ => throw new NotImplementedException()
+                   };
+              }
+
+             Seasoning GetSeasoning()
+              {
+                Console.Write("Seasoning (spicy, salty, sweet): ");
+                var input = Console.ReadLine();
+                return input switch
+                {
+                    "spicy" => Seasoning.Spicy,
+                    "sweet" => Seasoning.Sweet,
+                    "salty" => Seasoning.Salty,
+                    _ => throw new NotImplementedException(),
+                };
+               }
+             (TypeFood type, MainIngredients ingredient, Seasoning seasoning) soup = GetSoup();
+             //create tuple to combine the three enum and get final option.
+             Console.WriteLine("That looks amazing! \nThis is your final choice. ");
+             
+             Console.WriteLine($"{soup.seasoning} {soup.ingredient} {soup.type}");
+          }
+          else{
+            break;
+          }
+         }
+
+    } 
+} 
+enum TypeFood 
+{
+    Soup,
+    Stew,
+    Gumbo
+}
+enum MainIngredients 
+{
+    Potatoes,
+    Carrots,
+    Chicken,
+    Beef
+}
+enum Seasoning 
+{
+    Spicy,
+    Sweet,
+    Salty
+}
