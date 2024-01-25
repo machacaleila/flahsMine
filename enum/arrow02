@@ -1,0 +1,27 @@
+using System;
+using System.Collections;
+using System.Data;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
+
+public class ArrowStore
+
+{
+    static void Main(string[] args)
+    {
+        MyArrow home = new MyArrow(ArrowHead.Curved, FletchingTypes.Plastic, 3); //call my new class
+
+        Console.WriteLine("Welcome to the ArrowStore, please choose your ideal arrow:");  
+        //ask the user the head, fletch, and lengt
+        while (true){
+
+            //Call each one from the constructor
+           
+            
+            
+            Console.WriteLine($"That arrow costs {MyArrow.GetCost()} gold.");
+        }
+    }
+}
+
