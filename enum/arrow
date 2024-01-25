@@ -1,0 +1,92 @@
+
+using System;
+using System.Collections;
+using System.Data;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
+
+
+
+public class MyArrow
+{
+    //create the arrow how it is composed. Use from the types on enum.
+    private ArrowHead _arrowhead;
+    private FletchingTypes _fletch;
+    private float _lenght;
+    //come to life my arrow thorugh constructor
+    
+
+    private MyArrow(ArrowHead arrow, FletchingTypes fletch, float leng ){
+         _arrowhead = arrow;
+         _fletch = fletch;
+         _lenght = leng;
+    }
+    
+    public void DisplayArrow(){
+        Console.WriteLine($"That arrow costs {GetCost()} gold.");
+        Console.WriteLine($"Your arrow is: {GetArrow()}");
+        
+    }
+
+    public MyArrow GetArrow(){
+        ArrowHead arrow = GetUserArrow();
+        FletchingTypes fletch = GetUserFletch();
+        float length = GetLength();
+        return new MyArrow(arrow, fletch, length);
+    }
+     //get the arrowtypes from enum1
+    ArrowHead GetUserArrow(){
+        Console.Write("Choose the Arrow type (Broadhead, Curved, Agate): ");
+        var input = Console.ReadLine();
+        //switch the input expression converting to values of the enum of arrowhead
+        return input switch
+        {
+            "Broadhead"=> ArrowHead.Broadhead,
+              "Curved"=> ArrowHead.Curved,
+            "Agate"=> ArrowHead.Agate,
+             _=> throw new NotImplementedException()
+            };
+        }
+    //Get the fletch from enum2
+    FletchingTypes GetUserFletch(){
+        Console.Write("Choose the fletch type (Plastic, Feather, Aerovane): ");
+        var input = Console.ReadLine();
+        return input switch {
+         "Plastic" => FletchingTypes.Plastic,
+         "Feather" => FletchingTypes.Feather,
+         "Aerovane" => FletchingTypes.Aerovane,
+         _=> throw new NotImplementedException()
+
+         };
+    }
+      //Get the length,
+     float GetLength(){
+        Console.Write("Arrow length: ");
+        //convert from string to float number
+         float input = Convert.ToSingle(Console.ReadLine());
+         return input;
+     }
+    public float GetCost(){
+        float headcost = _arrowhead;
+        float fletchcost = _fletch;
+     //Add the values
+        return headcost + fletchcost;
+    }
+
+
+
+}
+enum ArrowHead
+{
+    Broadhead,
+    Curved,
+    Agate
+
+}
+enum FletchingTypes
+{
+    Plastic,
+    Feather,
+    Aerovane
+}
