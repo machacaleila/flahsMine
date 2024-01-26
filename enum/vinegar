@@ -1,0 +1,43 @@
+using System;
+using System.Diagnostics;
+//Leila Machaca, 25/1/2024, Lab 1
+//1. Write a program that asks the user for a message and key and displays the message as above (message need not be encrypted for these points).
+//2. Write a documented stub for a static method that accepts a character and returns true if it is a lowercase letter and false otherwise (this one done for you):
+
+public class Program {
+    //create the message
+    static int encrypted()
+    {
+        
+        int message = 3;
+        return message;
+    }
+
+    static int Vigenere(){
+        //purpose of the program.
+       Console.WriteLine("Hi there! We are going to encrypt any characters you type throught the Vigenre method. ");
+        int a = -1;
+       do {
+         //ask user type any message
+         Console.Write("Please enter the message");
+         var user = Console.ReadLine();
+          //ask user the encription key
+         Console.Write("Please enter an encryption key");
+         var userKey = Console.ReadLine();
+            
+         Console.WriteLine($"Here is the encrypte message {encrypted}");
+       } while ( a!= 0);{
+             Console.Write("Awesome! would you like to try again?: ");
+            var yes = Console.ReadLine();
+            var again = Program.encrypted();
+            if (yes == "yes"){
+                return again;
+            } else {
+                Console.WriteLine("Thanks, come back any time.");
+            }
+        }
+      return a;
+    }
+
+
+}
