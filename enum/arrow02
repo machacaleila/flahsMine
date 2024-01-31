@@ -1,7 +1,6 @@
 
 using System;
 using System.Collections;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 public class ArrowStore
@@ -16,7 +15,20 @@ public class ArrowStore
         
         //call the method to get the arrow 
         while (true) {
-            Console.WriteLine(home.GetArrow());
+              //allow user to chose predefined arrow
+             Console.WriteLine("1 - Elite Arrow");
+             Console.WriteLine("2 - Beginner Arrow");
+             Console.WriteLine("3 - Marksman Arrow");
+             Console.WriteLine("4 - Custom Arrow");
+             string user = Console.Readline();
+             NewArrow arrow = choice switch   //get user option change it. Call the static mehtod.
+               {
+                    "1" => home.CreateEliteArrow(),
+                    "2" => home.CreateBeginnerArrow(),
+                    "3" => home.CreateMarksmanArrow(),
+                     _ => home.GetArrow();,//same method for custom
+               }; 
+            
             Console.WriteLine($"That arrow costs {home.GetCost()} gold.");
             Console.Write("Awesome! would you like to choose another arrow ? (y/n): ");
             var user1 = Console.ReadLine();
@@ -114,6 +126,11 @@ public class ArrowStore
      //Add the values
         return headcost + fletchcost + allcost;
     }
+
+//create the static data to predifined the styles
+    public static MyArrow CreateEliteArrow() => new NewArrow(ArrowHead.Broadhead, FletchingTypes.Plastic, 85);
+    public static MyArrow CreateBeginnerArrow() => new NewArrow(ArrowHead.Curved, FletchingTypes.Feather, 75);
+    public static MyArrow CreateMarksmanArrow() => new NewArrow(ArrowHead.Agate, FletchingTypes.Aerovane, 65);
 
 }
 enum ArrowHead
