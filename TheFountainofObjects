@@ -261,6 +261,26 @@ public class FountainSense : ISense
 
 }
 
+
+        /*primero:  two dimensional array. level12
+        room class
+        map class(cuartos cuantos)
+        flechas.
+        player class
+        sense (hear, smell,)
+        Win/loose game
+
+
+
+        camviar el tamano de mapa . contructor que acepte dos valores.
+         pits; pozo, entro muero. agreagr un cuarto que te de un warming antes del pozo. 
+
+         Maeltrons; remolinos, te empuja a un random cuarto. 
+         Amarok: crear enemigos u el player muere, se puede oler uno de un cuarto anterior. 
+         getting armed : disparos para matar amarokos. 
+        */
+        
+
 public enum RoomType { Normal, Entrance, Fountain,  OffTheMap }
 
 
